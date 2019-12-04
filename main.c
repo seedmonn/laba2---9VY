@@ -12,7 +12,6 @@ int main()
 	int cnt=0;
 	int flag = NO;
 	int found = NO;
-	char *p = str;
 
 	FILE* in;
 	in = fopen("text.txt", "r");
@@ -25,7 +24,7 @@ int main()
 	out = fopen("result.txt", "w");
 	while(!feof(in))
 	{
-		memset(str, 0, LENGTH * sizeof(str[0]));
+		memset(str, 0, LENGTH * sizeof(str[0])); // Функция memset заполняет первые LENGTH * sizeof(str[0]) байт области памяти, на которую указывает аргумент str, символом, код которого указывается аргументом 0.
 		fgets(str, LENGTH, in);
 		char* j = str; // позиция начала слова
 		char* in_ptr = str; //  позиция текущего символа
@@ -59,7 +58,7 @@ int main()
 				}
 				flag = NO;
 				found = NO;
-				if (*in_ptr == '.' || *in_ptr == ',') // для нормального отображения в консоли
+				if (*in_ptr == '.' || *in_ptr == ',') // условие для нормального отображения в консоли
 					*in_ptr = ' ';
 				printf("%c", *in_ptr); fputc(*in_ptr, out); //пробелы для "нормальных слов" (по условию задачи)
 			}
